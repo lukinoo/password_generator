@@ -26,18 +26,22 @@ let copy_state: boolean = true;
 
 type passwordType = () => string;
 
+// returns randomLowercases
 const randomLowerCaseLetters: passwordType = () => {
   return lower_case[Math.floor(Math.random() * lower_case.length)];
 };
 
+// returns randomUppercases
 const randomUpperCaseLetters: passwordType = () => {
   return upper_case[Math.floor(Math.random() * upper_case.length)];
 };
 
+// returns randomNumbers
 const randomNumbers: passwordType = () => {
   return numbers[Math.floor(Math.random() * numbers.length)];
 };
 
+// returns randomSymbols
 const randomSymbols: passwordType = () => {
   return symbols[Math.floor(Math.random() * symbols.length)];
 };
@@ -75,6 +79,8 @@ const checkBoxHandler: checkBoxHandlerType = () => {
     password.push(randomSymbols());
   }
 
+  // if checkboxes is not checked
+
   if (checkBoxUnchecked()) {
     password.push("");
     copy_state = false;
@@ -96,6 +102,8 @@ const passwordGenerateHandler = () => {
   password_input.value = password;
 };
 
+// password copy handler function
+
 const passwordCopyHandler = () => {
   if (copy_state) {
     password_input.focus();
@@ -106,5 +114,6 @@ const passwordCopyHandler = () => {
   }
 };
 
+// event listeners
 generate_password_button.addEventListener("click", passwordGenerateHandler);
 copy_button.addEventListener("click", passwordCopyHandler);
